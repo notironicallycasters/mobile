@@ -1,0 +1,55 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Edifis"
+config/description="Build the tallest tower !"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://logo.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://Icon.png"
+config/windows_native_icon="res://icon..ico"
+
+[autoload]
+
+RigidBodyAutoScaler="*res://addons/rigidbody_auto_scaler/RigidBodyAutoScaler.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/size/mode=3
+window/stretch/mode="viewport"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/rigidbody_auto_scaler/plugin.cfg")
+
+[input]
+
+lmb={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(187, 2),"global_position":Vector2(196, 48),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, null]
+}
+
+[physics]
+
+2d/physics_engine="Box2D"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

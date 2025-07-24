@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://8q0cvuilo5ct"]
+
+[ext_resource type="Texture2D" uid="uid://7bia8hv4u8wd" path="res://Plank.png" id="1_nt7pv"]
+[ext_resource type="Script" path="res://plank_pin.gd" id="1_o8gel"]
+[ext_resource type="Script" path="res://sprite_2d.gd" id="2_sqfu3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51ncm"]
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cfa3"]
+size = Vector2(1, 60)
+
+[sub_resource type="SphereMesh" id="SphereMesh_06tae"]
+radial_segments = 4
+rings = 3
+
+[node name="Plank" type="RigidBody2D"]
+process_mode = 1
+collision_layer = 3
+collision_mask = 3
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_51ncm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(0.017, 1)
+texture = ExtResource("1_nt7pv")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 60)
+script = ExtResource("2_sqfu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3cfa3")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+angular_limit_enabled = true
+angular_limit_lower = -0.261799
+angular_limit_upper = 0.261799
+script = ExtResource("1_o8gel")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="PinJoint2D"]
+modulate = Color(0.125725, 0.145003, 0.179796, 1)
+scale = Vector2(15, 15)
+mesh = SubResource("SphereMesh_06tae")
